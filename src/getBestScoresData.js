@@ -16,7 +16,9 @@ class getBestScoresData {
         if ((!Array.isArray(result)) || (result.length <= 0)) throw "查不到" + this.user + "的成绩";
         const scoreObjects = result.map((item) => { return new ScoreObject(item) });
         const exScoreObjects = [];
-        for (let i = 0; i < scoreObjects.length; i++) {
+        const length = scoreObjects.length;
+        for (let i = 0; i < length; i++) {
+            console.log("[" + (i + 1) + "/" + length + "] 加载成绩：" + scoreObjects[i].beatmap_id);
             exScoreObjects.push(await scoreObjects[i].extendScore());
         }
         return exScoreObjects;
