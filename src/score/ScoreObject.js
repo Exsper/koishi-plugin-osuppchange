@@ -80,5 +80,16 @@ class ScoreObject {
         const ppAll = oldppString + "\n" + newppString + "\n";
         return beatmapString + accString + comboString + modsString + rankString + scoreString + ppAll;
     }
+    toString2() {
+        const beatmapParams = "CS" + this.cs.toFixed(1) + "  AR" + this.ar.toFixed(1) + "  OD" + this.od.toFixed(1) + "  HP" + this.hp.toFixed(1);
+        const beatmapString = this.beatmapTitle + "\n" + beatmapParams + "  ★" + this.stars.toFixed(2) + "\n";
+        const accString = "ACC：" + this.acc.toFixed(2) + "%\n";
+        const comboString = "combo: " + this.combo + " / " + this.fullCombo + "\n";
+        const modsString = "mod：" + utils.getScoreModsString(this.mods) + "\n";
+        const oldppString = "oldpp: " + this.oldpp.total.toFixed(2) + "pp (aim: " + this.oldpp.aim.toFixed(0) + "  spd: " + this.oldpp.speed.toFixed(0) + "  acc: " + this.oldpp.acc.toFixed(0) + ")";
+        const newppString = "newpp: " + this.newpp.total.toFixed(2) + "pp (aim: " + this.newpp.aim.toFixed(0) + "  spd: " + this.newpp.speed.toFixed(0) + "  acc: " + this.newpp.acc.toFixed(0) + ")";
+        const ppAll = oldppString + "\n" + newppString + "\n";
+        return beatmapString + accString + comboString + modsString + ppAll;
+    }
 }
 module.exports = ScoreObject;
